@@ -28,6 +28,11 @@ public class Main {
             // 스케줄러를 생성합니다. 참고로 생성했다고 스케줄러가 실제 동작 상태에 들어간 게 아닙니다.
             scheduler = new StdSchedulerFactory(properties).getScheduler();
 
+            // 참고: 사실 이미 디폴트 세팅값이 있어서 굳이 이렇게 세팅하지 않아도 됩니다.
+            // quartz-2.3.2.jar!/org/quartz/quartz.properties 경로에 기본 설정값들이 이미 있습니다.
+            // 해당 기본 세팅을 사용하는 default scheduler 를 사용하고 싶다면 아래 팩토리 메소드를 호출하세요.
+            // scheduler = StdSchedulerFactory.getDefaultScheduler();
+
             // 스케줄러가 수행해야 할 일(= JobDetail instance)에서 사용할 DataMap 을 생성합니다.
             JobDataMap jobDataMap = JobDataMapSupport
                     .newJobDataMap(Map.of(
